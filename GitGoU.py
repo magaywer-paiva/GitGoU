@@ -3,8 +3,8 @@ import argparse
 import sys
 import os
 import subprocess
-try:                        # In order to be able to import tkinter for
-    import tkinter as tk    # either in python 2 or in python 3
+try:
+    import tkinter as tk 
 except ImportError:
     import Tkinter as tk
 from tkinter import *
@@ -13,6 +13,7 @@ from tkinter import scrolledtext
 
 global commits
 global messages
+
 #INICIALIZA A JANELA
 window = tk.Tk()
 window.title("GitGoU")
@@ -38,32 +39,32 @@ LOG = Label(window,width=30)
 LOG.grid(column=0, row=8,rowspan=1,columnspan=8,sticky=N+S+E+W)
 
 #CRIA OS CAMPOS DE INSERCAO
-KEYLB = Label(text="Palavra de busca :")
+KEYLB = Label(text="Palavra-chave")
 KEYLB.grid(column=2, row=0,rowspan=1,columnspan=1,sticky=N+S+W)
 KEY = Entry(window)
 KEY.grid(column=3, row=0,rowspan=1,columnspan=4,sticky=N+S+E+W)
 
-AUTHORLB = Label(text="Autor :")
+AUTHORLB = Label(text="Autor")
 AUTHORLB.grid(column=2, row=1,rowspan=1,columnspan=1,sticky=N+S+W)
 AUTHOR = Entry(window)
 AUTHOR.grid(column=3, row=1,rowspan=1,columnspan=4,sticky=N+S+E+W)
 
-DATELB = Label(text="DATE :")
+DATELB = Label(text="Data")
 DATELB.grid(column=2, row=2,rowspan=1,columnspan=1,sticky=N+S+W)
 DATE = Entry(window)
 DATE.grid(column=3, row=2,rowspan=1,columnspan=4,sticky=N+S+E+W)
 
-MSGLB = Label(text="Mensagem :")
+MSGLB = Label(text="Mensagem")
 MSGLB.grid(column=2, row=3,rowspan=1,columnspan=1,sticky=N+S+W)
 MSG = Entry(window)
 MSG.grid(column=3, row=3,rowspan=1,columnspan=4,sticky=N+S+E+W)
 
-ARQUILB = Label(text="Arquivo :")
+ARQUILB = Label(text="Arquivo")
 ARQUILB.grid(column=2, row=4,rowspan=1,columnspan=1,sticky=N+S+W)
 ARQUI = Entry(window)
 ARQUI.grid(column=3, row=4,rowspan=1,columnspan=4,sticky=N+S+E+W)
 
-COMANDLB = Label(text="Parâmetros adicionais :")
+COMANDLB = Label(text="Parâmetros adicionais")
 COMANDLB.grid(column=2, row=5,rowspan=1,columnspan=1,sticky=N+S+W)
 COMAND = Entry(window)
 COMAND.grid(column=3, row=5,rowspan=1,columnspan=4,sticky=N+S+E+W)
@@ -91,10 +92,10 @@ def reset_all():
 	COMAND.delete(0,END)
 
 
-SEARCH = Button(window, text="Busca Commits", command=clicked)
+SEARCH = Button(window, text="Filtrar versões", command=clicked)
 SEARCH.grid(column=7, row=0,rowspan=5,columnspan=1,sticky=N+S+E+W)
 
-CLEAR = Button(window, text="RESET", command=reset_all)
+CLEAR = Button(window, text="Limpar parâmentros", command=reset_all)
 CLEAR.grid(column=7, row=5,rowspan=1,columnspan=1,sticky=N+S+E+W)
 
 COMMITS.config(cursor="hand2")
@@ -164,7 +165,7 @@ def search_commits(KEY,file,autor,DATE,msg,adit):
 	if(msg!=""):msg=" --grep '"+msg+"'"
 	if(file!=""):file=" -- '*"+file+"'"
 	if(adit!=""):adit=" "+adit
-	print('COMAND DOIDO git log --pretty=format:"%s"'+autor+DATE+file+msg+adit)
+	print('git log --pretty=format:"%s"'+autor+DATE+file+msg+adit)
 	messages = subprocess.getoutput('git log --pretty=format:"%s"'+autor+DATE+file+msg+adit).split('\n')
 	commits = subprocess.getoutput('git log --pretty=format:"%H"'+autor+DATE+file+msg+adit).split('\n')
 	COMMITS.configure(state = 'normal')
