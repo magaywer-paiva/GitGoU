@@ -9,5 +9,7 @@ Após cloná-la, a ferramenta precisa ser copiada para um repositório versionad
 
 # Requisitos
   Instalação da tkinter
+  
   Instalação da ferramenta de busca AG
+  
     sudo apt-get install silversearcher-ag
