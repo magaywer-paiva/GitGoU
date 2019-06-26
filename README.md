@@ -8,7 +8,7 @@ Após cloná-la, a ferramenta precisa ser copiada para um repositório versionad
   Linux
 
 # Requisitos
-  Instalação da tkinter
+  Instalação da tkinter, argparse e subprocess
   
   Instalação da ferramenta de busca AG
   
